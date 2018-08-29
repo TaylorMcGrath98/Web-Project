@@ -1,0 +1,34 @@
+@(LoginForm: Form[models.users.Login], user: models.users.User)
+@import helper._
+
+@main("Login Required", user) {
+<div class="col-xs-4">
+  <h3>Sign in</h3>
+	<!-- Display login errors if they exist -->
+	@if(LoginForm.hasGlobalErrors) {
+		  <p class="alert alert-warning">
+		      @LoginForm.globalError.message
+		  </p>
+	}
+    @if(flash.containsKey("error")) {
+		  <div class="alert alert-warning">
+		      @flash.get("loginRequired")
+		  </div>
+	}
+	<!-- The login form -->
+	@helper.form(CSRF(controllers.security.routes.LoginCtrl.loginSubmit())) {
+
+    <div class="form-group">
+        <input type="text" name="email" class="form-control input-xs" placeholder="Email" value="@LoginForm("email").getValue.orElse("")">
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" class="form-control input-xs" placeholder="Password">
+    </div>
+
+		<!-- Add a submit button -->
+		<div class="form-group">
+		    <input type="submit" value="Sign In" class="btn btn-primary">
+		</div>
+		}
+</div>
+}
