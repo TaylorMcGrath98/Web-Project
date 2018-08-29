@@ -1,0 +1,109 @@
+/*!
+ * Start Bootstrap - Shop Homepage HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 40px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    padding: 0px;
+    width: 100px;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#panel1 {
+    width: auto;
+    text-align: left;
+    padding-left: auto;
+    padding-right: auto;
+    position: left;
+}
+#panel2 {
+    width: auto;
+    text-align: center;
+    position: center;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+#panel3 {
+    width: 100%;
+    text-align: right;
+    padding-left: auto;
+    padding-right: auto;
+    position: right;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#homeimg {
+    width: 1000px;
+    text-align: center;
+    padding-top: 10px;
+    padding-right: 0px;
+    border:0px;
+    height:100% ;
+    border-radius: 0px;
+    padding: 0px;
+
+}
+#box1 {
+    background-color: lightgrey;
+    width: 100%;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+    text-align: center;
+}
