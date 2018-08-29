@@ -1,0 +1,77 @@
+@import models.products.Category
+@import models.products.Product
+@import models.users.User
+@(env: play.api.Environment, categories: List[Category], products: List[Product], catId: Long, filter: String, user: User)
+
+
+<!-- Pass page title and user on to main -->
+@main("Products Page", user) {
+
+	<style>
+		form {
+			margin-bottom: 1em;
+		}
+	</style>
+
+	<div class="row">
+
+	  <div class="col-md-3">
+	<div class="list-group">
+			<!-- Start of For loop - For each c in categories add a link -->
+			<a href="@routes.ProductCtrl.listProducts(0, filter)" class="list-group-item">All categories</a>
+			@for(c <- categories) {
+		<a href="@routes.ProductCtrl.listProducts(c.getId, filter)" class="list-group-item">@c.getName</a>
+			}
+	</div>
+	  </div>
+
+		<div class="col-md-9">
+			@if(flash.containsKey("success")) {
+				  <div class="alert alert-success">
+					  @flash.get("success")
+				  </div>
+			}
+
+			<!-- Search Form -->
+			<div id="actions">
+			 <form action="@routes.ProductCtrl.listProducts(catId)" method="GET">
+				<input type="search" id="searchbox" name="filter" value="@filter" placeholder="Filter by product name...">
+				<input type="submit" id="searchsubmit" value="Filter by name" class="btn-md btn-primary">
+			 </form>
+			</div>
+
+			<table class="table table-bordered table-hover table-condensed">
+				<thead>
+				<!-- The header row-->
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Stock</th>
+					<th>Price</th>
+					<th>Buy</th>
+				</tr>
+				</thead>
+				<tbody>
+					<!-- Start of For loop - For each p in products add a row -->
+					@for(p <- products) {
+					<tr>
+						<!-- Display each product field value in a column -->
+						@if(env.resource("public/images/productImages/thumbnails/" + p.getId + ".jpg").isDefined) {
+							<td><img src="/assets/images/productImages/thumbnails/@(p.getId).jpg"/></td>
+						} else {
+							<td><img src="/assets/images/productImages/thumbnails/noImage.png"/></td>
+						}
+						<td>@p.getName</td>
+						<td>@p.getDescription</td>
+						<td>@p.getStock</td>
+						<td>&euro; @("%.2f".format(p.getPrice))</td>
+						<td><a href="@routes.ShoppingCtrl.addToBasket(p.getId)"  class="btn btn-default btn-xs"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+					</tr>
+					} <!-- End of For loop -->
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+}
